@@ -220,7 +220,7 @@ module Bulkrax
       # reload the object
       object = find
       return object if object&.persisted?
-      console
+      
       raise(ObjectFactoryInterface::RecordInvalid, object)
     end
 
