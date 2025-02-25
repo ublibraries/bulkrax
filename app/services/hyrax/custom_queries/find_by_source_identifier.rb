@@ -8,7 +8,8 @@ module Hyrax
     #   Hyrax.query_service.custom_queries.find_by_model_and_property_value(model:, property: :deduplication_key, value: 'jhqsdhdwhcolh')
     #
     # @see https://github.com/samvera/valkyrie/wiki/Queries#custom-queries
-    # adapted from 
+    
+    # adapted from emory-libraries/dlp-selfdeposit 
     class FindBySourceIdentifier
       def self.queries
         [:find_by_model_and_property_value]

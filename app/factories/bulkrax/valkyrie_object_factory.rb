@@ -182,7 +182,7 @@ module Bulkrax
       return if value.blank?
 
       # Return nil or a single object.
-      Hyrax.query_service.custom_query.find_by_model_and_property_value(model: klass, property: name_field, value: value)
+      Hyrax.query_service.custom_queries.find_by_model_and_property_value(model: klass, property: name_field, value: value)
     end
     # rubocop:enable Metrics/ParameterLists
 
@@ -220,7 +220,7 @@ module Bulkrax
       # reload the object
       object = find
       return object if object&.persisted?
-
+      console
       raise(ObjectFactoryInterface::RecordInvalid, object)
     end
 
