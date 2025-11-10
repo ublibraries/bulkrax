@@ -1,6 +1,6 @@
 // Global JS file for Bulkrax
 
-$(document).on('turbolinks:load ready', function() {
+function setupGlobalListeners() {
   // Apply to Importer and Exporter views
   $('button#err_toggle').click(function() {
     $('#error_trace').toggle();
@@ -21,4 +21,13 @@ $(document).on('turbolinks:load ready', function() {
     });
     return true;
   });
-});
+}
+
+// Use Turbolinks if available, fallback to Turbo if available, fallback to vanilla JS if needed.
+if (typeof Turbolinks !== 'undefined' && Turbolinks !== null) {
+  $(document).on('turbolinks:load ready', setupGlobalListeners());
+} else if (typeof Turbo !== 'undefined') {
+  $(document).on('turbo:load', setupGlobalListeners());
+} else {
+  $(document).on('DOMContentLoaded', setupGlobalListeners());
+}
