@@ -15,6 +15,7 @@ function prepBulkrax(event) {
 
   // Initialize the uploader only if hyraxUploader is defined
   if (typeof $.fn.hyraxUploader === 'function') {
+    console.log('initializing uploader');
     // Initialize the uploader
     var uploader = $('.fileupload-bulkrax');
     var maxFileSize = uploader.data('max-file-size');
@@ -90,6 +91,7 @@ function prepBulkrax(event) {
 
   // observer for cloud files being added
   var form = document.getElementById('new_importer');
+  console.log(form);
   if (form == null) {
     form = document.getElementsByClassName('edit_importer')[0];
   }
@@ -259,12 +261,12 @@ function setError(selector, error) {
 //$(document).on({'ready': prepBulkrax, 'turbolinks:load': prepBulkrax});
 // Use Turbolinks if available, fallback to Turbo if available, fallback to vanilla JS if needed.
 if (typeof Turbolinks !== 'undefined' && Turbolinks !== null) {
-  $(document).on('turbolinks:load', prepBulkrax());
   console.log("turbolinks listener from importers.js");
+  $(document).on('turbolinks:load', prepBulkrax());
 } else if (typeof Turbo !== 'undefined') {
-  $(document).on('turbo:load', prepBulkrax());
   console.log("turbo listener from importers.js");
+  $(document).on('turbo:load', prepBulkrax());
 } else {
-  $(document).on('DOMContentLoaded', prepBulkrax());
   console.log("vanilla listener from importers.js");
+  $(document).on('DOMContentLoaded', prepBulkrax());
 }
