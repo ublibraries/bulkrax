@@ -35,3 +35,6 @@ if (typeof Turbolinks !== 'undefined' && Turbolinks !== null) {
   $(document).on('DOMContentLoaded', setupGlobalListeners());
   console.log("vanilla listener from bulkrax.js");
 }
+$(document).on('ready', function() {
+  console.log('document ready');
+});

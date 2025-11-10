@@ -2,6 +2,7 @@
 // All this logic will automatically be available in application.js.
 
 function prepBulkrax(event) {
+  console.log('prepBulkrax');
   if($('form#new_importer, form.edit_importer').length < 1) {
     return true;
   }
@@ -24,6 +25,7 @@ function prepBulkrax(event) {
 
     // Function to toggle 'required' attribute based on uploaded files
     function toggleRequiredAttribute() {
+      console.log('toggleRequiredAttribute');
       const fileInput = $('#addfiles');
       const uploadedFilesTable = $('.fileupload-bulkrax tbody.files');
 
@@ -83,6 +85,7 @@ function prepBulkrax(event) {
   $('body').on('change', '#importer_parser_klass', function(e) {
     handleParserKlass();
   });
+  console.log('first handleParserKlass call');
   handleParserKlass();
 
   // observer for cloud files being added
@@ -118,6 +121,7 @@ function prepBulkrax(event) {
 }
 
 function handleFileToggle(file_path) {
+  console.log('handleFileToggle');
   if (file_path === undefined || file_path.length === 0) {
     $('#file_path').hide();
     $('#file_upload').hide();
@@ -170,6 +174,7 @@ function handleFileToggle(file_path) {
 }
 
 function handleParserKlass() {
+  console.log('inside handleParserKlass function');
   <% Bulkrax.parsers.map{ |p| p[:partial]}.uniq.each do |partial| %>
   if($('.<%= partial %>').length > 0) {
     window.<%= partial %> = $('.<%= partial %>').detach();
@@ -187,6 +192,7 @@ function handleParserKlass() {
 }
 
 function handleBrowseEverything(){
+  console.log('handleBrowseEverything');
   var button = $("button[data-toggle='browse-everything']");
   if(button.length == 0) { return; }
   button.browseEverything({
@@ -208,6 +214,7 @@ function handleBrowseEverything(){
 }
 
 function handleSourceLoad(refresh_button, base_url, external_set_select) {
+  console.log('handleSourceLoad');
   if (base_url.val() == "") { // ignore empty base_url value
     return;
   }
@@ -232,6 +239,7 @@ function handleSourceLoad(refresh_button, base_url, external_set_select) {
 }
 
 function genExternalSetOptions(selector, sets) {
+  console.log('genExternalSetOptions');
   out = '<option value="">- Select One -</option>';
 
   out += sets.map(function(set) {
@@ -243,6 +251,7 @@ function genExternalSetOptions(selector, sets) {
 }
 
 function setError(selector, error) {
+  console.log('set error');
   selector.html('<option value="none">Error - Please enter Base URL and try again</option>');
   selector.attr('disabled', true);
 }
