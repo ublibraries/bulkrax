@@ -1,6 +1,7 @@
 // Global JS file for Bulkrax
 
 function setupGlobalListeners() {
+  console.log("setting up global listeners");
   // Apply to Importer and Exporter views
   $('button#err_toggle').click(function() {
     $('#error_trace').toggle();
@@ -26,8 +27,11 @@ function setupGlobalListeners() {
 // Use Turbolinks if available, fallback to Turbo if available, fallback to vanilla JS if needed.
 if (typeof Turbolinks !== 'undefined' && Turbolinks !== null) {
   $(document).on('turbolinks:load ready', setupGlobalListeners());
+  console.log("turbolinks listener from bulkrax.js");
 } else if (typeof Turbo !== 'undefined') {
   $(document).on('turbo:load', setupGlobalListeners());
+  console.log("turbo listener from bulkrax.js");
 } else {
   $(document).on('DOMContentLoaded', setupGlobalListeners());
+  console.log("vanilla listener from bulkrax.js");
 }

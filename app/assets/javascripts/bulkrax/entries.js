@@ -1,4 +1,5 @@
 function setupButtonToggles() {
+  console.log("setting up button toggles");
   $("button#entry_error").click(function() {
     $("#error_trace").toggle();
   });
