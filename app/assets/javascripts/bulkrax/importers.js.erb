@@ -256,4 +256,15 @@ function setError(selector, error) {
   selector.attr('disabled', true);
 }
 
-$(document).on({'ready': prepBulkrax, 'turbolinks:load': prepBulkrax});
+//$(document).on({'ready': prepBulkrax, 'turbolinks:load': prepBulkrax});
+// Use Turbolinks if available, fallback to Turbo if available, fallback to vanilla JS if needed.
+if (typeof Turbolinks !== 'undefined' && Turbolinks !== null) {
+  $(document).on('turbolinks:load', prepBulkrax());
+  console.log("turbolinks listener from importers.js");
+} else if (typeof Turbo !== 'undefined') {
+  $(document).on('turbo:load', prepBulkrax());
+  console.log("turbo listener from importers.js");
+} else {
+  $(document).on('DOMContentLoaded', prepBulkrax());
+  console.log("vanilla listener from importers.js");
+}
