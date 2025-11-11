@@ -5,7 +5,7 @@ function prepBulkrax(event) {
   console.log('prepBulkrax, form length: ' + $('form#new_importer, form.edit_importer').length);
   if($('form#new_importer, form.edit_importer').length < 1) {
     console.log('importer form length < 1');
-    return true;
+    return;
   }
 
   var refresh_button = $('.refresh-set-source');
