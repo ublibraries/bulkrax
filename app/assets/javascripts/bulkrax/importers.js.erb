@@ -269,5 +269,5 @@ if (typeof Turbolinks !== 'undefined' && Turbolinks !== null) {
   $(document).on('turbo:load', prepBulkrax());
 } else {
   console.log("vanilla listener from importers.js");
-  $(document).on("ready", prepBulkrax());
+  $(document).ready(prepBulkrax());
 }

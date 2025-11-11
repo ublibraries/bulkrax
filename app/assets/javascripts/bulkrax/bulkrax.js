@@ -32,9 +32,9 @@ if (typeof Turbolinks !== 'undefined' && Turbolinks !== null) {
   $(document).on('turbo:load', setupGlobalListeners());
   console.log("turbo listener from bulkrax.js");
 } else {
-  $(document).on('DOMContentLoaded', setupGlobalListeners());
-  console.log("vanilla listener from bulkrax.js");
+  $(document).on('ready', setupGlobalListeners());
+  console.log("ready listener from bulkrax.js");
 }
 $(document).ready(function() {
-  console.log('document ready');
+  console.log('document ready from bulkrax.js');
 });
